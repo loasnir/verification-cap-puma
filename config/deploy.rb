@@ -19,7 +19,8 @@ set :linked_dirs, fetch(:linked_dirs, [
 set :puma_preload_app, false
 set :puma_workers, 2
 
-set :rbenv_ruby_version, '2.7.2'
+set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_path, "/home/vagrant/.rbenv" #指定するとこのパスは以下のbundleが、指定しないと$HOME配下のbundleが実行された
 set :bundle_path, './vendor/bundle'
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_roles, :all
