@@ -8,29 +8,34 @@ Vagrant.configure('2') do |config|
   config.vm.network 'private_network', ip: '192.168.33.10'
   config.vm.provider 'virtualbox' do |vb|
     vb.name = 'verification-cap-puma'
+    vb.memory = 1024 * 4
+    vb.cpus = 2
+    vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
   config.vm.provision 'shell', inline: <<-SHELL
-    apt-get update
-    apt-get install -y git curl build-essential libssl-dev ruby-build
+    apt-get update -qq; apt-get upgrade -y -qq
+    apt-get install -y -qq git curl wget
   SHELL
 
-  config.vm.provision 'shell', privileged: false, inline: <<-SHELL
-    if ! [ -d ~/.rbenv ]; then
-      git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-      git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-      echo 'export PATH="~/.rbenv/bin:$PATH"' >> ~/.bashrc
-      echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-    fi
+  config.vm.provision 'shell', inline: <<-SHELL
+    apt-get install -y -qq nginx
+    systemctl start nginx
+    systemctl enable nginx
   SHELL
 
-  config.vm.provision 'shell', privileged: false, inline: <<-SHELL
-    if ! [ -d ~/.rbenv/bin/rbenv ]; then
-      export PATH="~/.rbenv/bin:$PATH"
-      eval "$(rbenv init -)"
-      rbenv install -s 2.7.2; rbenv rehash; rbenv global 2.7.2
-      gem install bundler
-    fi
+  config.vm.provision 'shell', inline: <<-SHELL
+    apt-get install -y -qq \
+      libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+      libgdbm-dev libgdbm-compat-dev libyaml-dev libncurses5-dev libffi-dev
+    
+    wget https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.2.tar.gz
+    tar xvfz ruby-2.7.2.tar.gz
+    cd ruby-2.7.2
+    ./configure --disable-install-rdoc
+    make -j 40
+    make install
+    gem install bundler
   SHELL
 
   config.vm.provision 'shell', inline: <<-SHELL
