@@ -513,3 +513,146 @@ mkdir: cannot create directory ‘/var/www’: Permission denied
   INFO [1530f533] Running RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet as vagrant@verification-cap-puma
  DEBUG [1530f533] Command: cd /var/www/html/releases/20210114062406 && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet )
  DEBUG [1530f533] 	Could not locate Gemfile
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-01-14 15:24:48 +0900 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO rbenv: rbenv_ruby is not set; ruby version will be defined by the remote hosts via rbenv
+  INFO [361fefe4] Running /usr/bin/env mkdir -p /tmp as vagrant@verification-cap-puma
+ DEBUG [361fefe4] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env mkdir -p /tmp )
+  INFO [361fefe4] Finished in 0.463 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh 0.0%
+  INFO Uploading /tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh 100.0%
+  INFO [274bee2b] Running /usr/bin/env chmod 700 /tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh as vagrant@verification-cap-puma
+ DEBUG [274bee2b] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env chmod 700 /tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh )
+  INFO [274bee2b] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [6aeb2fcd] Running /usr/bin/env git ls-remote git@github.com:loasnir/verification-cap-puma.git HEAD as vagrant@verification-cap-puma
+ DEBUG [6aeb2fcd] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh" ; /usr/bin/env git ls-remote git@github.com:loasnir/verification-cap-puma.git HEAD )
+ DEBUG [6aeb2fcd] 	b33c6ea980387ae4a27c1fb87626f8ba1efa754d	HEAD
+  INFO [6aeb2fcd] Finished in 2.029 seconds with exit status 0 (successful).
+  INFO [94da8072] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as vagrant@verification-cap-puma
+ DEBUG [94da8072] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases )
+  INFO [94da8072] Finished in 0.008 seconds with exit status 0 (successful).
+ DEBUG [c5406470] Running [ -f /var/www/html/current/REVISION ] as vagrant@verification-cap-puma
+ DEBUG [c5406470] Command: [ -f /var/www/html/current/REVISION ]
+ DEBUG [c5406470] Finished in 0.006 seconds with exit status 1 (failed).
+ DEBUG [66f6bf1c] Running [ -f /var/www/html/repo/HEAD ] as vagrant@verification-cap-puma
+ DEBUG [66f6bf1c] Command: [ -f /var/www/html/repo/HEAD ]
+ DEBUG [66f6bf1c] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/html/repo
+ DEBUG [51aaebe0] Running if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi as vagrant@verification-cap-puma
+ DEBUG [51aaebe0] Command: if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi
+ DEBUG [51aaebe0] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO [bd6ad926] Running /usr/bin/env git remote set-url origin git@github.com:loasnir/verification-cap-puma.git as vagrant@verification-cap-puma
+ DEBUG [bd6ad926] Command: cd /var/www/html/repo && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh" ; /usr/bin/env git remote set-url origin git@github.com:loasnir/verification-cap-puma.git )
+  INFO [bd6ad926] Finished in 0.008 seconds with exit status 0 (successful).
+  INFO [c7ad84dd] Running /usr/bin/env git fetch --depth 1 origin main as vagrant@verification-cap-puma
+ DEBUG [c7ad84dd] Command: cd /var/www/html/repo && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh" ; /usr/bin/env git fetch --depth 1 origin main )
+ DEBUG [c7ad84dd] 	From github.com:loasnir/verification-cap-puma
+ * branch            main       -> FETCH_HEAD
+ DEBUG [c7ad84dd] 	 + dbcff87...b33c6ea main       -> main  (forced update)
+  INFO [c7ad84dd] Finished in 2.462 seconds with exit status 0 (successful).
+ DEBUG [6f939476] Running if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi as vagrant@verification-cap-puma
+ DEBUG [6f939476] Command: if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi
+ DEBUG [6f939476] Finished in 0.005 seconds with exit status 0 (successful).
+  INFO [8d43818d] Running /usr/bin/env mkdir -p /var/www/html/releases/20210114062450 as vagrant@verification-cap-puma
+ DEBUG [8d43818d] Command: cd /var/www/html/repo && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh" ; /usr/bin/env mkdir -p /var/www/html/releases/20210114062450 )
+  INFO [8d43818d] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO [2dab118b] Running /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /var/www/html/releases/20210114062450 as vagrant@verification-cap-puma
+ DEBUG [2dab118b] Command: cd /var/www/html/repo && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh" ; /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /var/www/html/releases/20210114062450 )
+  INFO [2dab118b] Finished in 0.009 seconds with exit status 0 (successful).
+ DEBUG [69828f6d] Running if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi as vagrant@verification-cap-puma
+ DEBUG [69828f6d] Command: if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi
+ DEBUG [69828f6d] Finished in 0.004 seconds with exit status 0 (successful).
+ DEBUG [15ee18e0] Running /usr/bin/env git rev-list --max-count=1 main as vagrant@verification-cap-puma
+ DEBUG [15ee18e0] Command: cd /var/www/html/repo && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-verification-cap-puma-production-suzuki_toru.sh" ; /usr/bin/env git rev-list --max-count=1 main )
+ DEBUG [15ee18e0] 	b33c6ea980387ae4a27c1fb87626f8ba1efa754d
+ DEBUG [15ee18e0] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [1dbcf09b] Running if test ! -d /var/www/html/releases/20210114062450; then echo "Directory does not exist '/var/www/html/releases/20210114062450'" 1>&2; false; fi as vagrant@verification-cap-puma
+ DEBUG [1dbcf09b] Command: if test ! -d /var/www/html/releases/20210114062450; then echo "Directory does not exist '/var/www/html/releases/20210114062450'" 1>&2; false; fi
+ DEBUG [1dbcf09b] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO [5d5637fb] Running /usr/bin/env echo "b33c6ea980387ae4a27c1fb87626f8ba1efa754d" > REVISION as vagrant@verification-cap-puma
+ DEBUG [5d5637fb] Command: cd /var/www/html/releases/20210114062450 && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env echo "b33c6ea980387ae4a27c1fb87626f8ba1efa754d" > REVISION )
+  INFO [5d5637fb] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [5de98b02] Running if test ! -d /var/www/html/releases/20210114062450; then echo "Directory does not exist '/var/www/html/releases/20210114062450'" 1>&2; false; fi as vagrant@verification-cap-puma
+ DEBUG [5de98b02] Command: if test ! -d /var/www/html/releases/20210114062450; then echo "Directory does not exist '/var/www/html/releases/20210114062450'" 1>&2; false; fi
+ DEBUG [5de98b02] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO [96b5da10] Running RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle config --local deployment true as vagrant@verification-cap-puma
+ DEBUG [96b5da10] Command: cd /var/www/html/releases/20210114062450 && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [96b5da10] Finished in 0.159 seconds with exit status 0 (successful).
+  INFO [13f0b95c] Running RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle config --local path ./vendor/bundle as vagrant@verification-cap-puma
+ DEBUG [13f0b95c] Command: cd /var/www/html/releases/20210114062450 && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle config --local path ./vendor/bundle )
+  INFO [13f0b95c] Finished in 0.144 seconds with exit status 0 (successful).
+  INFO [1680f059] Running RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle config --local without deployment as vagrant@verification-cap-puma
+ DEBUG [1680f059] Command: cd /var/www/html/releases/20210114062450 && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle config --local without deployment )
+  INFO [1680f059] Finished in 0.145 seconds with exit status 0 (successful).
+ DEBUG [3cb2aae6] Running if test ! -d /var/www/html/releases/20210114062450; then echo "Directory does not exist '/var/www/html/releases/20210114062450'" 1>&2; false; fi as vagrant@verification-cap-puma
+ DEBUG [3cb2aae6] Command: if test ! -d /var/www/html/releases/20210114062450; then echo "Directory does not exist '/var/www/html/releases/20210114062450'" 1>&2; false; fi
+ DEBUG [3cb2aae6] Finished in 0.004 seconds with exit status 0 (successful).
+ DEBUG [34f6891b] Running RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle check as vagrant@verification-cap-puma
+ DEBUG [34f6891b] Command: cd /var/www/html/releases/20210114062450 && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [34f6891b] 	The following gems are missing
+ DEBUG [34f6891b] 	 * rake (13.0.3)
+ DEBUG [34f6891b] 	 * net-ssh (6.1.0)
+ DEBUG [34f6891b] 	 * net-scp (3.0.0)
+ DEBUG [34f6891b] 	 * sshkit (1.21.1)
+ DEBUG [34f6891b] 	 * airbrussh (1.4.0)
+ DEBUG [34f6891b] 	 * ast (2.4.1)
+ DEBUG [34f6891b] 	 * concurrent-ruby (1.1.7)
+ DEBUG [34f6891b] 	 * i18n (1.8.7)
+ DEBUG [34f6891b] 	 * capistrano (3.14.1)
+ DEBUG [34f6891b] 	 * capistrano-bundler (2.0.1)
+ DEBUG [34f6891b] 	 * capistrano-passenger (0.2.0)
+ DEBUG [34f6891b] 	 * capistrano-rbenv (2.2.0)
+ DEBUG [34f6891b] 	 * nio4r (2.5.4)
+ DEBUG [34f6891b] 	 * puma (5.1.1)
+ DEBUG [34f6891b] 	 * capistrano3-puma (5.0.2)
+ DEBUG [34f6891b] 	 * ruby2_keywords (0.0.2)
+ DEBUG [34f6891b] 	 * mustermann (1.1.1)
+ DEBUG [34f6891b] 	 * parallel (1.20.1)
+ DEBUG [34f6891b] 	 * parser (3.0.0.0)
+ DEBUG [34f6891b] 	 * rack (2.2.3)
+ DEBUG [34f6891b] 	 * rack-protection (2.1.0)
+ DEBUG [34f6891b] 	 * rainbow (3.0.0)
+ DEBUG [34f6891b] 	 * regexp_parser (2.0.3)
+ DEBUG [34f6891b] 	 * rexml (3.2.4)
+ DEBUG [34f6891b] 	 * rubocop-ast (1.4.0)
+ DEBUG [34f6891b] 	 * ruby-progressbar (1.11.0)
+ DEBUG [34f6891b] 	 * unicode-display_width (2.0.0)
+ DEBUG [34f6891b] 	 * rubocop (1.8.1)
+ DEBUG [34f6891b] 	 * tilt (2.0.10)
+ DEBUG [34f6891b] 	 * sinatra (2.1.0)
+ DEBUG [34f6891b] 	 * temple (0.8.2)
+ DEBUG [34f6891b] 	 * slim (4.0.0)
+ DEBUG [34f6891b] 	Install missing gems with `bundle install`
+ DEBUG [34f6891b] Finished in 0.188 seconds with exit status 1 (failed).
+  INFO [d3bc7918] Running RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet as vagrant@verification-cap-puma
+ DEBUG [d3bc7918] Command: cd /var/www/html/releases/20210114062450 && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; RBENV_ROOT=/home/vagrant/.rbenv /home/vagrant/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet )
+  INFO [d3bc7918] Finished in 7.887 seconds with exit status 0 (successful).
+  INFO [769a631c] Running /usr/bin/env ln -s /var/www/html/releases/20210114062450 /var/www/html/releases/current as vagrant@verification-cap-puma
+ DEBUG [769a631c] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env ln -s /var/www/html/releases/20210114062450 /var/www/html/releases/current )
+  INFO [769a631c] Finished in 0.009 seconds with exit status 0 (successful).
+  INFO [8f66736d] Running /usr/bin/env mv /var/www/html/releases/current /var/www/html as vagrant@verification-cap-puma
+ DEBUG [8f66736d] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env mv /var/www/html/releases/current /var/www/html )
+  INFO [8f66736d] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [f25b4519] Running /usr/bin/env ls -x /var/www/html/releases as vagrant@verification-cap-puma
+ DEBUG [f25b4519] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env ls -x /var/www/html/releases )
+ DEBUG [f25b4519] 	20210114060740	20210114060900	20210114061228	20210114061718	20210114061745
+20210114062331	20210114062406	20210114062450
+ DEBUG [f25b4519] Finished in 0.008 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 8 deployed releases on verification-cap-puma
+ DEBUG [f672997c] Running [ -d /var/www/html/current ] as vagrant@verification-cap-puma
+ DEBUG [f672997c] Command: [ -d /var/www/html/current ]
+ DEBUG [f672997c] Finished in 0.004 seconds with exit status 0 (successful).
+ DEBUG [77a11506] Running /usr/bin/env readlink /var/www/html/current as vagrant@verification-cap-puma
+ DEBUG [77a11506] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env readlink /var/www/html/current )
+ DEBUG [77a11506] 	/var/www/html/releases/20210114062450
+ DEBUG [77a11506] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [b138b7e8] Running /usr/bin/env rm -rf /var/www/html/releases/20210114060740 /var/www/html/releases/20210114060900 /var/www/html/releases/20210114061228 as vagrant@verification-cap-puma
+ DEBUG [b138b7e8] Command: ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env rm -rf /var/www/html/releases/20210114060740 /var/www/html/releases/20210114060900 /var/www/html/releases/20210114061228 )
+  INFO [b138b7e8] Finished in 0.008 seconds with exit status 0 (successful).
+ DEBUG [e9cef9b7] Running if test ! -d /var/www/html/releases; then echo "Directory does not exist '/var/www/html/releases'" 1>&2; false; fi as vagrant@verification-cap-puma
+ DEBUG [e9cef9b7] Command: if test ! -d /var/www/html/releases; then echo "Directory does not exist '/var/www/html/releases'" 1>&2; false; fi
+ DEBUG [e9cef9b7] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO [4fec5303] Running /usr/bin/env echo "Branch main (at b33c6ea980387ae4a27c1fb87626f8ba1efa754d) deployed as release 20210114062450 by suzuki_toru" >> /var/www/html/revisions.log as vagrant@verification-cap-puma
+ DEBUG [4fec5303] Command: cd /var/www/html/releases && ( export RBENV_ROOT="/home/vagrant/.rbenv" RBENV_VERSION="" ; /usr/bin/env echo "Branch main (at b33c6ea980387ae4a27c1fb87626f8ba1efa754d) deployed as release 20210114062450 by suzuki_toru" >> /var/www/html/revisions.log )
+  INFO [4fec5303] Finished in 0.008 seconds with exit status 0 (successful).

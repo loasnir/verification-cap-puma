@@ -10,7 +10,10 @@ set :git_shallow_clone, 1
 
 set :linked_files, fetch(:linked_files, []).push
 
-set :linked_dirs, fetch(:linked_dirs, []).push
+set :linked_dirs, fetch(:linked_dirs, [
+  'tmp/pids',
+  'log'
+]).push
 
 set :puma_preload_app, false
 set :puma_workers, 2

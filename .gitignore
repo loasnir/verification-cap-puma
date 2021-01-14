@@ -4,3 +4,6 @@
 
 /.vagrant
 /.bundle
+
+/log/*
+!.gitkeep
