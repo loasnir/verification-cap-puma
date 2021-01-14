@@ -60,3 +60,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'capistrano-bundler', '1.6.0', require: false # FIXME: 2.x は bundler 2 対応版となるため影響を調査してアップデートする。可能があれば bundler 自体もアップデートする
 gem 'capistrano-rails', require: false
 gem 'capistrano3-puma', require: false
+gem 'capistrano-rake', require: false
+gem 'capistrano-rails-console', require: false
