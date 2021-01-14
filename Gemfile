@@ -12,7 +12,7 @@ gem 'slim', '4.0.0'
 
 group :development, :test do
   gem 'capistrano', '3.14.1', require: false
-  gem 'capistrano3-puma', require: false
+  gem 'capistrano3-puma', '~> 4.0.0', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rbenv', require: false
