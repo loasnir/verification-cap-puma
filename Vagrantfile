@@ -15,7 +15,7 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision 'shell', inline: <<-SHELL
     apt-get update -qq; apt-get upgrade -y -qq
-    apt-get install -y -qq git curl wget sqlite3
+    apt-get install -y -qq git curl wget libsqlite3-dev
   SHELL
 
   config.vm.provision 'shell', inline: <<-SHELL
